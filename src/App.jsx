@@ -6,6 +6,7 @@ import Task from "./components/Task/Task";
 
 const App = () => {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+  const [filter, setFilter] = useState('All')
 
   /* Añadir una tarea */
   const addTask = (newTask) => {
@@ -26,17 +27,28 @@ const App = () => {
     });
     setTasks(newTasks);
   }
+
+  /* Modificar el filtro */
+  const handleFilter = (filter) => setFilter(filter);
+
   return (
     <div className="todo-app">
       <h1>#todo</h1>
       <div className="todo-app_content">
-        <Navbar />
+        <Navbar handle={handleFilter} />
         <AddForm addTask={addTask} />
 
         <div className="taskList">
-          {tasks.map((task, index) => (
-            <Task task={task} key={index} handle={handleStatus} />
-          ))}
+          {
+            tasks.map((task, index) => {
+              if (filter == 'All')
+                return <Task task={task} key={index} handle={handleStatus} />
+              else if (task.status == 'completed' && filter != 'active')
+                return <Task task={task} key={index} handle={handleStatus} />
+              else if (task.status == 'active' && filter != 'completed')
+                return <Task task={task} key={index} handle={handleStatus} />
+            })
+          }
         </div>
       </div>
     </div>

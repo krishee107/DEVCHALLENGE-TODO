@@ -8,4 +8,17 @@ nav {
     color: #333333;
     align-items: center;
     justify-content: space-evenly;
+    border-bottom: 2px rgb(212, 212, 212) solid;
+    margin: 0 10%;
+}
+
+.tab {
+    box-sizing: border-box;
+    padding: 15px 0;
+    border: 4px transparent solid;
+}
+
+.tab:hover {
+    cursor: pointer;
+    border-bottom: 4px #2F80ED solid;
 }
