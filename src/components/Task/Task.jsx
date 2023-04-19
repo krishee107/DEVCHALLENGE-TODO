@@ -9,9 +9,17 @@ const Task = ({ task, handle }) => {
 
   return (
     <div className="task">
-      <label>
-        <input type="checkbox" className='checkDone' onClick={changeStatus} />{task.title} - {task.status}
-      </label>
+      {task.status == 'active' ?
+        <label>
+          <input type="checkbox" onClick={changeStatus} />
+          {task.title}
+        </label>
+        :
+        <label className='completed'>
+          <input type="checkbox" checked onClick={changeStatus} />
+          {task.title}
+        </label>
+      }
     </div>
   )
 }

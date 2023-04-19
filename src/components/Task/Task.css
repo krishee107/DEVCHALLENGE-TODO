@@ -9,3 +9,7 @@
     line-height: 22px;
     color: #000000;
 }
+
+.completed {
+    text-decoration: line-through;
+}
