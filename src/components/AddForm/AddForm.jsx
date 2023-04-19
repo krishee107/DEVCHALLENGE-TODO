@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
+
 import './AddForm.css';
 
 const AddForm = (props) => {
   const [task, setTask] = useState({
+    id: uuid(),
     title: '',
     status: 'active',
   });
@@ -19,6 +22,7 @@ const AddForm = (props) => {
     event.preventDefault();
     props.addTask(task);
     setTask({
+      id: uuid(),
       title: '',
       status: 'active',
     });
