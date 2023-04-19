@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import AddForm from "./components/AddForm/AddForm";
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
 
   const addTask = (newTask) => {
     console.log("ENTRA")
@@ -12,8 +12,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(tasks)
-  }, [tasks])
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div className="todo-app">
