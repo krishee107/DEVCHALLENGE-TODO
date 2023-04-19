@@ -31,6 +31,12 @@ const App = () => {
   /* Modificar el filtro */
   const handleFilter = (filter) => setFilter(filter);
 
+  /* Borrar task */
+  const handleDelete = (id) => {
+    const newTasks = tasks.filter(task => task.id !== id);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="todo-app">
       <h1>#todo</h1>
@@ -42,11 +48,11 @@ const App = () => {
           {
             tasks.map((task, index) => {
               if (filter == 'All')
-                return <Task task={task} key={index} handle={handleStatus} />
+                return <Task task={task} key={index} handle={handleStatus} filter={filter} />
               else if (task.status == 'completed' && filter != 'active')
-                return <Task task={task} key={index} handle={handleStatus} />
+                return <Task task={task} key={index} handle={handleStatus} filter={filter} deleteTask={handleDelete} />
               else if (task.status == 'active' && filter != 'completed')
-                return <Task task={task} key={index} handle={handleStatus} />
+                return <Task task={task} key={index} handle={handleStatus} filter={filter} />
             })
           }
         </div>

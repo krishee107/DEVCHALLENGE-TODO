@@ -12,4 +12,6 @@
 
 .completed {
     text-decoration: line-through;
+    display: flex;
+    justify-content: space-between;
 }
