@@ -1,0 +1,11 @@
+.task {
+    margin: 0 auto;
+    width: 50%;
+    text-align: left;
+    padding: 10px 0;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+}

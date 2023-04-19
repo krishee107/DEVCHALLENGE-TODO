@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar"
 import './App.css';
 import { useEffect, useState } from "react";
 import AddForm from "./components/AddForm/AddForm";
+import Task from "./components/Task/Task";
 
 const App = () => {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
@@ -24,9 +25,7 @@ const App = () => {
 
         <div className="taskList">
           {tasks.map((task, index) => (
-            <div key={index}>
-              <span>{task.title}</span>
-            </div>
+            <Task task={task} key={index} />
           ))}
         </div>
       </div>
